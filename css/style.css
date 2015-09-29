@@ -1,0 +1,74 @@
+
+/*body{
+	font-family:Helvetica CY, 'Arial','Nimbus Sans L', sans-serif;	
+	font-size: 1.2em;	
+}*/
+a {
+	color: #22b5e0;
+	outline-style: none;
+	
+
+
+}
+a:hover {
+	color: #b83f37;
+	text-decoration: none;
+}
+
+
+h4{
+	text-align: center;
+	color: #09ad78;
+	font-family: 'Comfortaa', cursive;
+}
+p{
+	font-family:Helvetica CY, 'Arial','Nimbus Sans L', sans-serif;	
+	font-size: 1.2em;
+}
+.navbar.navbar-default{
+    
+    outline:none;
+
+}
+
+ol.myOl li {
+	font-family:Helvetica CY, 'Arial','Nimbus Sans L', sans-serif;	
+	font-size: 1.2em;	
+}
+ul.nav.navbar-nav li a {
+	color: #22b5e0;
+	font-family: 'Comfortaa', cursive;
+	font-size: 1.3em;
+
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+ul.nav.navbar-nav.navbar-right li a:hover{
+  color: #b83f37;
+  background-color: transparent;
+}
+ul.nav.navbar-nav.navbar-right li a:focus{
+  color: #b83f37;
+  background-color: transparent;
+}
+
+
+}
+
+.navbar-nav {
+  margin: auto;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+.mainPageBlock {
+	
+}
+mark {
+  background: #09ad78;
+  color: #000;
+}
+

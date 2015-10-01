@@ -1,7 +1,7 @@
 
 /*body{
-	font-family:Helvetica CY, 'Arial','Nimbus Sans L', sans-serif;	
-	font-size: 1.2em;	
+	background-color: #e7e7e7;
+		
 }*/
 a {
 	color: #22b5e0;
@@ -22,12 +22,14 @@ h4{
 	font-family: 'Comfortaa', cursive;
 }
 p{
-	font-family:Helvetica CY, 'Arial','Nimbus Sans L', sans-serif;	
+	font-family: 'Helvetica', 'Arial','Nimbus Sans L', sans-serif;	
 	font-size: 1.2em;
 }
 .navbar.navbar-default{
     
     outline:none;
+    background-color: transparent;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06);
 
 }
 
@@ -57,6 +59,7 @@ ul.nav.navbar-nav.navbar-right li a:focus{
 
 .navbar-nav {
   margin: auto;
+
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -65,7 +68,17 @@ ul.nav.navbar-nav.navbar-right li a:focus{
 }
 
 .mainPageBlock {
-	
+   
+ border-radius: 4px 4px 4px 4px;
+-moz-border-radius: 4px 4px 4px 4px;
+-webkit-border-radius: 4px 4px 4px 4px;
+border: 2px solid #F0F0F0;
+background: #fff;
+box-shadow: 0 3px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06);
+margin: 1em 1em 1em; 
+/*background: #F0F0F0 ;*/
+
+
 }
 mark {
   background: #09ad78;

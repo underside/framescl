@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Расчет материала для каркасного дома</title>
+<title>TEST</title>
 <meta name="description" content="Калькулятор для примерного расчета материала для строительства каркасного дома">
 <meta name="keywords" content="калькулятор дома, расчет дома, расчет каркаса, рассчитать каркасный дом, посчитать материад для каркасника">
 <script src="../sc1.js"></script>
@@ -52,20 +52,31 @@ button.onclick = function () {
 };
 
 
-function getId (val1,val2){ 
-	val = document.getElementById(val2).innerHTML = null;
-	val = document.getElementById(val1).value;	
-	val = val.replace(/\,/, '.'); 
-	val = +(Math.round((val)*100)/100);	
 
-	if (val == 0 || val < 0 ) {
-		return alert ("Введенное значение должно быть больше ноля");
+//Функция для захвата и проверки данных из input (полей ввода калькулятора) 
+function getId (val1,val2){ 
+	// Обнуляем div в котором хотим вывести результат
+	val2 = document.getElementById(val2).innerHTML = null; 
+	
+	//Берем элемент по ID
+	val1 = document.getElementById(val1).value;	
+
+	//Проверяем элемент на наличие запятой вместо точки, если есть, меняем на точку
+	val1 = val1.replace(/\,/, '.'); 
+
+	//Округляем число до сотых и превращаем строку в число 
+	val1 = +(Math.round((val1)*100)/100);	
+
+	//Проверяем чтобы значение было больше 0, и не являлось буквами
+	if (val1 == 0 || val1 < 0 || isNaN(val1)) {
+		return alert ("Введенное значение должно быть числом больше ноля");
 	};
 
-return val;
+return val1;
 }
 
 
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
 function inHtml (val1,val2){ 
 	val3 = document.getElementById(val1).innerHTML = val2;
 

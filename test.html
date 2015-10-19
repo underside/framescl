@@ -54,30 +54,31 @@ button.onclick = function () {
 
 
 //Функция для захвата и проверки данных из input (полей ввода калькулятора) 
-function getId (val1,val2){ 
-	// Обнуляем div в котором хотим вывести результат
-	val2 = document.getElementById(val2).innerHTML = null; 
-	
+function getId (val){ 
+		
 	//Берем элемент по ID
-	val1 = document.getElementById(val1).value;	
+	val = document.getElementById(val).value;	
 
 	//Проверяем элемент на наличие запятой вместо точки, если есть, меняем на точку
-	val1 = val1.replace(/\,/, '.'); 
+	val = val.replace(/\,/, '.'); 
 
 	//Округляем число до сотых и превращаем строку в число 
-	val1 = +(Math.round((val1)*100)/100);	
+	val = +(Math.round((val)*100)/100);	
 
 	//Проверяем чтобы значение было больше 0, и не являлось буквами
-	if (val1 == 0 || val1 < 0 || isNaN(val1)) {
+	if (val == 0 || val < 0 || isNaN(val)) {
 		return alert ("Введенное значение должно быть числом больше ноля");
 	};
 
-return val1;
-}
-
+return val;
+};
 
 //Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
 function inHtml (val1,val2){ 
+	// Обнуляем div в котором хотим вывести результат
+	val1 = document.getElementById(val).innerHTML = null; 
+
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
 	val3 = document.getElementById(val1).innerHTML = val2;
 
 return val3;

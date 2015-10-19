@@ -12,85 +12,42 @@ button.onclick = function () {
 			
     'use strict';
 	(function () {
-		
-		//Обнуляем значения всех расчетных форм
-		document.getElementById('s1').innerHTML = null;
-		document.getElementById('s2').innerHTML = null;
-		document.getElementById('s3').innerHTML = null;
-		document.getElementById('s3').innerHTML = null;
-		document.getElementById('s4').innerHTML = null;
-		document.getElementById('s5').innerHTML = null;
-		document.getElementById('s6').innerHTML = null;
-		document.getElementById('s7').innerHTML = null;
-		document.getElementById('v1').innerHTML = null;
-		document.getElementById('v2').innerHTML = null;
-		document.getElementById('v3').innerHTML = null;
-		document.getElementById('v4').innerHTML = null;
-		document.getElementById('v5').innerHTML = null;
-		document.getElementById('v6').innerHTML = null;
-		document.getElementById('v24').innerHTML=null;
-		document.getElementById('osbFloor').innerHTML = null;
-		document.getElementById('osbWall').innerHTML = null;
-		document.getElementById('osbSumm').innerHTML = null;
-		document.getElementById('woodFrame').innerHTML = null;
-		document.getElementById('woodRoofFrame').innerHTML = null;
-		document.getElementById('woodFrameFront').innerHTML = null;
-		document.getElementById('woodFloor').innerHTML = null;
-		document.getElementById('woodFloor2').innerHTML = null;
-		document.getElementById('woodInsideWall').innerHTML = null;
-		document.getElementById('woodSummary').innerHTML = null;
-		document.getElementById('wood50x50Walls').innerHTML = null;
-		document.getElementById('wood50x50Roof').innerHTML = null;
-		document.getElementById('wood50x50Summ').innerHTML = null;
-		document.getElementById('wood25x150Roof').innerHTML = null;
-		document.getElementById('sidingSummary').innerHTML = null;
-		document.getElementById('gklWalls').innerHTML = null;
-		document.getElementById('gklCeiling').innerHTML = null;
-		document.getElementById('gklSumm').innerHTML = null;
-		document.getElementById('vapourMemb').innerHTML = null;
-		document.getElementById('windMemb').innerHTML = null;
-		document.getElementById('roofMembrane').innerHTML = null;
-		document.getElementById('roofMetall').innerHTML = null;
+		var inData = {};
+		inData.a1 = getId('a1'); // Ширина дома a0
+		inData.a2 = getId('a2'); //Длина дома a1
+		inData.a3 = getId('a3'); //Высота дома в коньке  a2
+		inData.a4 = getId('a4'); //Высота дома без фронтона a3 
+		inData.a5 = getId('a5'); //Высота фронтона a4
+		inData.a6 = getId('a6'); // Протяженность внутренних стен a5
+		inData.a7 = getId('a7'); // Количество жилых этажей a6
 
-
-		//Берем размеры из input форм по id, вводятся пользователем 
-		var a = [];
-		a[0] = dataCheck(document.getElementById('a1').value); // Ширина дома
-		a[1] = document.getElementById('a2').value; //Длина дома
-		a[2] = document.getElementById('a3').value; //Высота дома в коньке
-		a[3] = document.getElementById('a4').value; //Высота дома без фронтона
-		a[4] = document.getElementById('a5').value; //Высота фронтона
-		a[5] = document.getElementById('a6').value; // Протяженность внутренних стен
-		a[6] = document.getElementById('a7').value; // Количество жилых этажей
-
-		a[7] =  document.getElementById('u1').value; // Утепление внешних стен
-		a[8] =  document.getElementById('u2').value; // Утепление внутренних стен
-		a[9] =  document.getElementById('u3').value; // Утепление пола
-		a[10] = document.getElementById('u4').value; // Утепление кровли
-		a[11] = document.getElementById('u5').value; // Утепление фронтона
-		a[12] = document.getElementById('u6').value; // Утепление потолка
+		inData.u1 =  getId('u1'); // Утепление внешних стен a7
+		inData.u2 =  getId('u2'); // Утепление внутренних стен a8
+		inData.u3 =  getId('u3'); // Утепление пола a9
+		inData.u4 = getId('u4'); // Утепление кровли a10
+		inData.u5 = getId('u5');; // Утепление фронтона a11
+		inData.u6 = getId('u6'); // Утепление потолка a12
 		
 		
 		//Расчетные площади дома
-		var s = [];
-		s[0] = a[0] * a[1] * a[6]; //Площадь пола s1
-		s[1] = a[0] * a[1]; //Площадь потолка s2
-		s[2] = (a[0] * a[3] * 2) + (a[1] * a[3] * 2); //Площадь внешних стен без фронтона s3 = (a1*a4*2) + (a2*a4*2)
-		s[3] = a[3] * a[5]; //Площадь внутренних стен s4 = (a4*a6)
-		s[4] = a[0] * a[4]; //Площадь фронтонных стен s5 = (a1*a5)
-		s[5] = parseFloat((a[0] * a[1] * a[6]) - (a[5] * a[8] + (a[0] * 2 + a[1] * 2) * a[7]).toFixed(2)); //Жилая площадь дома s6
-		s[6] = parseFloat(((((a[0] * 0.5 / 0.866) + 0.5)*(a[1] + 0.5)) * 2).toFixed(2));// Площадь двускатной кровли s7
+		var calcData = {};
+		calcData.s1 = inData.a1 * inData.a2 * inData.a7; //Площадь пола s1
+		calcData.s2 = inData.a1 * inData.a2; //Площадь потолка s2
+		calcData.s3 = (inData.a1 * inData.a4 * 2) + (inData.a2 * inData.a4 * 2); //Площадь внешних стен без фронтона s3 = (a1*a4*2) + (a2*a4*2)
+		calcData.s4 = inData.a4 * inData.a6; //Площадь внутренних стен s4 = (a4*a6)
+		calcData.s5 = inData.a1 * inData.a5; //Площадь фронтонных стен s5 = (a1*a5)
+		calcData.s6 = (inData.a1 * inData.a2 * inData.a7) - ((inData.a6 * inData.u2 + (inData.a1 * 2 + inData.a2 * 2) * inData.u1); //Жилая площадь дома s6
+		calcData.s7 = parseFloat(((((inData.a1 * 0.5 / 0.866) + 0.5)*(inData.a2 + 0.5)) * 2).toFixed(2));// Площадь двускатной кровли s7
 
 		
 		//Расчетный объем утеплителя
-		var v = [];
-		v[0] = parseFloat((s[0] * a[9]).toFixed(2)); //Пол, м3 
-		v[1] = parseFloat((s[2] * a[7]).toFixed(2)); // Внешние стены, м3
-		v[2] = parseFloat((s[3] * a[8]).toFixed(2)); //Внутренние стены, м3 
-		v[3] = parseFloat((s[6] * a[10]).toFixed(2)); //Кровля, м3 
-		v[4] = parseFloat((s[4] * a[11]).toFixed(2)); //Фронтонные стены, м3 
-		v[24] = parseFloat((s[1] * a[12]).toFixed(2)); //Потолок, м3 
-		v[5] = parseFloat((v[0] + v[1] + v[2] + v[3] + v[4] + v[24]).toFixed(2)); //Общий объем утеплителя, м3 
+		calcData.v1 = parseFloat((s[0] * a[9]).toFixed(2)); //Пол, м3 
+		calcData.v2 = parseFloat((s[2] * inData.u1).toFixed(2)); // Внешние стены, м3
+		calcData.v3 = parseFloat((s[3] * inData.u2).toFixed(2)); //Внутренние стены, м3 
+		calcData.v4 = parseFloat((s[6] * a[10]).toFixed(2)); //Кровля, м3 
+		calcData.v5 = parseFloat((s[4] * a[11]).toFixed(2)); //Фронтонные стены, м3 
+		calcData.v6 = parseFloat((s[1] * a[12]).toFixed(2)); //Потолок, м3 
+		calcData.v7 = parseFloat((v[0] + v[1] + v[2] + v[3] + v[4] + v[24]).toFixed(2)); //Общий объем утеплителя, м3 
 
 		//Расчетное количество плитного материала, м2
 
@@ -99,17 +56,17 @@ button.onclick = function () {
 		v[8] = s[0] + s[2]; //osbSumm
 
 		//Расчетное количество Доски 50х100 и 50х150 для каркаса, м.п. 
-		v[9] = parseFloat(((a[1] / 0.6) * a[3] * 2 + (a[0] / 0.6) * a[3] * 2 + (a[1] * 3 + a[0] * 3)).toFixed(2)); //Д150 на каркас стен woodFrame
-		v[10] = parseFloat((((a[1]+0.5)/0.6)*((a[0]*0.5/0.866)+0.5)).toFixed(2));                //Д150 на стропила  woodRoofFrame
-		v[11] = parseFloat(((a[4]* 4)*2).toFixed(2));                                           //Д150 на фронтонные стены woodFrameFront	
-		v[12] = parseFloat(((a[1]/0.4)*a[0]).toFixed(2));                                       //Д150 на лаги пола woodFloor
-		v[13] = parseFloat((a[5]/0.6).toFixed(2));                                              //Д100 на внутренние стены woodInsideWall
+		v[9] = parseFloat(((inData.a2 / 0.6) * inData.a4 * 2 + (inData.a1 / 0.6) * inData.a4 * 2 + (inData.a2 * 3 + inData.a1 * 3)).toFixed(2)); //Д150 на каркас стен woodFrame
+		v[10] = parseFloat((((inData.a2+0.5)/0.6)*((inData.a1*0.5/0.866)+0.5)).toFixed(2));                //Д150 на стропила  woodRoofFrame
+		v[11] = parseFloat(((inData.a5* 4)*2).toFixed(2));                                           //Д150 на фронтонные стены woodFrameFront	
+		v[12] = parseFloat(((inData.a2/0.4)*inData.a1).toFixed(2));                                       //Д150 на лаги пола woodFloor
+		v[13] = parseFloat((inData.a6/0.6).toFixed(2));                                              //Д100 на внутренние стены woodInsideWall
 		v[14] = parseFloat((v[9] + v[10] + v[11] + v[12]*2).toFixed(2)); //Д150 суммарное количество woodSummary
 
 
 
 		//Расчетное количество брусок 50х50, м.п.
-		v[15] = parseFloat((((a[1]/0.6)*a[3])*2 + ((a[0]/0.6)*a[3])*2).toFixed(2)); //50х50 на стены для вентзазора wood50x50Walls 
+		v[15] = parseFloat((((inData.a2/0.6)*inData.a4)*2 + ((inData.a1/0.6)*inData.a4)*2).toFixed(2)); //50х50 на стены для вентзазора wood50x50Walls 
 				//var wood50x50Roof =  v[10]   woodRoofFrame
 		v[16] = parseFloat((v[15] + v[10]).toFixed(1));     //50х50 суммарное количество wood50x50Summ
 
@@ -121,7 +78,7 @@ button.onclick = function () {
 
 
 		//Расчетное количество гипсокартона, м2
-		v[19] = a[5]*a[3]*2 + s[2];  //gklWalls
+		v[19] = inData.a6*inData.a4*2 + s[2];  //gklWalls
 		v[20] = s[1]; //gklCeiling
 		v[21] = v[18] + v[19]; //gklSumm
 
@@ -211,16 +168,26 @@ button.onclick = function () {
 };
 
 
-function dataCheck (val1){ 
-	"val1".replace(/\./g,','); 
-	parseFloat(val1).toFixed(2);
+//Функция для захвата и проверки данных из input (полей ввода калькулятора) 
+function getId (val){ 
 		
-	if (val1 === 0 || val1 < 0 ) {
-		alert ("Введенное значение должно быть больше ноля");
-	}
-return val1;
+	//Берем элемент по ID
+	val = document.getElementById(val).value;	
+
+	//Проверяем элемент на наличие запятой вместо точки, если есть, меняем на точку
+	val = val.replace(/\,/, '.'); 
+
+	//Округляем число до сотых и превращаем строку в число 
+	val = +(Math.round((val)*100)/100);	
+
+	//Проверяем чтобы значение было больше 0, и не являлось буквами
+	if (val == 0 || val < 0 || isNaN(val)) {
+		return alert ("Введенное значение должно быть числом больше ноля");
+	};
+
+return val;
 }
-		
+
 			
 		
 

@@ -12,6 +12,7 @@ button.onclick = function () {
 			
     'use strict';
 	(function () {
+		document.getElementById('hiddenAlarm').classList.add('hidden');
 		var inData = {};
 		inData.a1 = getId('a1'); // Ширина дома a0
 		inData.a2 = getId('a2'); //Длина дома a1
@@ -171,6 +172,12 @@ button.onclick = function () {
 
 
 //Функция для захвата и проверки данных из input (полей ввода калькулятора) 
+function hiddenOff (el){
+
+				el = document.getElementById('hiddenAlarm');
+				el.classList.remove('hidden');
+				
+			};  
 function getId (val){ 
 		
 	//Берем элемент по ID
@@ -184,7 +191,9 @@ function getId (val){
 
 	//Проверяем чтобы значение было больше 0, и не являлось строкой
 	if (val == 0 || val < 0 || isNaN(val)) {
-		return alert ("Введенное значение должно быть числом больше ноля");
+		
+		return hiddenOff ();
+		
 	};
 
 return val;

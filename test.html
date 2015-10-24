@@ -15,7 +15,7 @@
 	<button id="myButton">Рассчитать</button>
 	<input type="text" id="i1" >
 	<div id='div1'></div>
-	<div id='div2'></div>
+	<div id='div2' class='hidden'>Внимание! Не те вводные данные. </div>
 	<div id='div3'></div>
 
 <script type="text/javascript">
@@ -69,7 +69,7 @@ function getId (val){
 
 	//Проверяем чтобы значение было больше 0, и не являлось буквами
 	if (val == 0 || val < 0 || isNaN(val)) {
-		return alert ("Введенное значение должно быть числом больше ноля");
+		return document.getElementById('div2').classList.remove('hidden');
 	};
 
 return val;

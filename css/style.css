@@ -20,6 +20,7 @@ h4{
 	text-align: center;
 	color: #09ad78;
 	font-family: 'Comfortaa', cursive;
+	text-decoration: none;
 }
 p{
 	font-family: 'Helvetica', 'Arial','Nimbus Sans L', sans-serif;	
@@ -99,12 +100,8 @@ body {
 	padding: 2em;
 	height: 100%;
 }
-h4 {
-	font-family: Arial, Helvetica, sans-serif;
-}
-img {
 
-}
+
 sup, sub { font-size: x-small; }
 header { 
 	background: url(img/icon.png) no-repeat;
@@ -114,7 +111,7 @@ header {
 	height: 60px;
 }
 footer {
-	clear: both;
+	/*clear: both;*/
 	border-top: 3px #9CF solid;
 	overflow: hidden;
 }
@@ -122,15 +119,17 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
+	padding: 1em;
 	}
 input[type=text] {
 	width: 6em;
 	float: right;
 }
-.house {
+/*.house {
 	float: right;
 	width: 50%; 
-}
+	height:auto;
+}*/
 button {
 	display: block;
 	padding: 0.5em 1em;
@@ -148,7 +147,7 @@ button:active { border: 3px #369 solid; }
 .data input[type=text] { margin-left: 2em; }
 .data {
 	border: 3px #9CF solid;
-	float: left;
+	/*float: left;*/
 	border-radius: 1em;
 	padding: 1em;
 	margin-bottom: 1em;
@@ -161,13 +160,13 @@ button:active { border: 3px #369 solid; }
 	color:#CC0000;
 	display: none;
 }
-.column {
+/*.column {
 	width: 33%;
 	float: left;
 	margin-top: 1em;
 	margin-bottom: 1em;
 
-}
+}*/
 .result {
 	text-align: right;
 	padding-right: 3em;
@@ -177,5 +176,5 @@ button:active { border: 3px #369 solid; }
 	margin-right: 1em;
 }
 .subscribe {
-	margin-top: 17px;
+	margin-top: 3em;
 }

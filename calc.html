@@ -19,7 +19,34 @@
 <title>Menu</title>
   </head>
 <body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter33229693 = new Ya.Metrika({
+                    id:33229693,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
 
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/33229693" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
  <div class="container-fluid" >
     
     <nav class="navbar navbar-default">
@@ -43,7 +70,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./index.html">Frameschool</a></li>
             <li><a href="./terms.html">Термины и понятия</a></li>
-            <li><a href="#">Калькулятор</a></li>
+            <li><a href="./calc.html">Калькулятор</a></li>
             <li><a href="#">Видеоуроки</a></li>
             <li><a href="#">Тестирование</a></li>
             <li><a href="#">Литература</a></li>
@@ -59,169 +86,172 @@
         
 </div>
 
-<img src="img/house1.png" class="house ">
-
-<div class="data col-xs-12 col-md-6 col-lg-5">
-	<form>
+<div class='row'>
+	<div class="data col-xs-12 col-md-6 col-lg-5">
+			<form>
+				<table>
+					<h4>Размеры дома,&nbsp;<em>м</em></h4>
+					<div id="hiddenAlarm" class="hidden list-group-item list-group-item-danger">Введенное значение должно быть числом больше ноля!</div>
+					<tr>
+						<td>Ширина дома,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a1" placeholder="5.2"></td>
+					</tr>
+					<tr>
+						<td>Длина дома,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a2" placeholder="6.3"></td>
+					</tr>
+					<tr>
+						<td>Высота дома в коньке,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a3" placeholder="7.3"></td>
+					</tr>
+					<tr>
+						<td>Высота дома без фронтона,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a4" placeholder="2.7"></td>
+					</tr>
+					<tr>
+						<td>Высота фронтона,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a5" placeholder="3"></td>
+					</tr>
+					<tr>
+						<td>Протяженность внутренних стен,&nbsp;<em>м</em></td>
+						<td><input type="text" id="a6" placeholder="15"></td>
+					</tr>
+					<tr>
+						<td>Количество жилых этажей,&nbsp;<em>шт.</em></td>
+						<td><input type="text" id="a7" placeholder="1"></td>
+					</tr>
+				</table>
+				
+				<table>
+					<h4>Толщина утепления,&nbsp;<em>м</em></h4>
+					<tr>
+						<td>Внешние стены,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u1" placeholder="0.15"></td>
+					</tr>
+					<tr>
+						<td>Внутренние стены,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u2" placeholder="0.1"></td>
+					</tr>
+					<tr>
+						<td>Пол,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u3" placeholder="0.15"></td>
+					</tr>
+					<tr>
+						<td>Кровля,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u4" placeholder="0.15"></td>
+					</tr>
+					<tr>
+						<td>Фронтон,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u5" placeholder="0.15"></td>
+					</tr>
+					<tr>
+						<td>Потолок,&nbsp;<em>м</em></td>
+						<td><input type="text" id="u6" placeholder="0.15"></td>
+					</tr>
+				</table>
+			</form>
+			<button id="myButton">Рассчитать</button>
+		</div>
+	<div class='col-xs-12 col-md-6 col-lg-7'>
+		<img src="img/house1.png" class= 'img-responsive'>
+	</div>
+</div>	
+<div class="row">
+	<div class="col-xs-12 col-md-6 col-lg-4" >
+		<h4>Площади дома,&nbsp;<em>м<sup>2</sup></em></h4>
 		<table>
-			<h4>Размеры дома,&nbsp;<em>м</em></h4>
 			<tr>
-				<td>Ширина дома,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a1" placeholder="5.2"></td>
+				<td>Площадь пола,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s1" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Длина дома,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a2" placeholder="6.3"></td>
+				<td>Площадь потолка,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s2" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Высота дома в коньке,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a3" placeholder="7.3"></td>
+				<td>Площадь внешних стен без фронтона,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s3" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Высота дома без фронтона,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a4" placeholder="2.7"></td>
+				<td>Площадь внутренних стен,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s4" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Высота фронтона,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a5" placeholder="3"></td>
+				<td>Площадь фронтонных стен,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s5" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Протяженность внутренних стен,&nbsp;<em>м</em></td>
-				<td><input type="text" id="a6" placeholder="15"></td>
+				<td>Жилая площадь дома,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s6" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Количество жилых этажей,&nbsp;<em>шт.</em></td>
-				<td><input type="text" id="a7" placeholder="1"></td>
+				<td>Площадь двухскатной кровли,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="s7" class="result"></div></td>
 			</tr>
 		</table>
-		
+		<h4>Объем утеплителя,&nbsp;<em>м<sup>3</sup></em></h4>
 		<table>
-			<h4>Толщина утепления,&nbsp;<em>м</em></h4>
 			<tr>
-				<td>Внешние стены,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u1" placeholder="0.15"></td>
+				<td>Пол,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v1" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Внутренние стены,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u2" placeholder="0.1"></td>
+				<td>Потолок,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v24" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Пол,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u3" placeholder="0.15"></td>
+				<td>Внешние стены,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v2" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Кровля,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u4" placeholder="0.15"></td>
+				<td>Внутренние стены,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v3" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Фронтон,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u5" placeholder="0.15"></td>
+				<td>Кровля,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v4" class="result"></div></td>
 			</tr>
 			<tr>
-				<td>Потолок,&nbsp;<em>м</em></td>
-				<td><input type="text" id="u6" placeholder="0.15"></td>
+				<td>Фронтонные стены,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v5" class="result"></div></td>
+			</tr>
+			<tr>
+				<td>Суммарный объем утеплителя,&nbsp;<em>м<sup>3</sup></em></td>
+				<td><div id="v6" class="result"></div></td>
 			</tr>
 		</table>
-	</form>
-	<button id="myButton">Рассчитать</button>
-</div>
-
-<div class="column col-xs-12 col-md-6 col-lg-6" style="clear:both;">
-	<h4>Площади дома,&nbsp;<em>м<sup>2</sup></em></h4>
-	<table>
-		<tr>
-			<td>Площадь пола,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s1" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Площадь потолка,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s2" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Площадь внешних стен без фронтона,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s3" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Площадь внутренних стен,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s4" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Площадь фронтонных стен,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s5" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Жилая площадь дома,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s6" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Площадь двухскатной кровли,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="s7" class="result"></div></td>
-		</tr>
-	</table>
-	<h4>Объем утеплителя,&nbsp;<em>м<sup>3</sup></em></h4>
-	<table>
-		<tr>
-			<td>Пол,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v1" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Потолок,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v24" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Внешние стены,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v2" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Внутренние стены,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v3" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Кровля,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v4" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Фронтонные стены,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v5" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Суммарный объем утеплителя,&nbsp;<em>м<sup>3</sup></em></td>
-			<td><div id="v6" class="result"></div></td>
-		</tr>
-	</table>
-	<table>
-	<table>
-		<h4>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="vinyl" class="result"></div></td>
-		</tr>
-	</table>
-	<table>
-		<h4>Мембраны,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Пароизоляция,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="vapourMemb" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Гидро-ветроизоляция для стен,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="windMemb" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Гидро-ветроизоляция для кровли,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="roofMembrane" class="result"></div></td>
-		</tr>
-	</table>
-	<table>
-		<h4>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="roofMetall" class="result"></div></td>
-		</tr>
-	</table>
-</div>
-
-<div class="column col-xs-12 col-md-6 col-lg-6">
+		<table>
+		<table>
+			<h4>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></h4>
+			<tr>
+				<td>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="vinyl" class="result"></div></td>
+			</tr>
+		</table>
+		<table>
+			<h4>Мембраны,&nbsp;<em>м<sup>2</sup></em></h4>
+			<tr>
+				<td>Пароизоляция,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="vapourMemb" class="result"></div></td>
+			</tr>
+			<tr>
+				<td>Гидро-ветроизоляция для стен,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="windMemb" class="result"></div></td>
+			</tr>
+			<tr>
+				<td>Гидро-ветроизоляция для кровли,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="roofMembrane" class="result"></div></td>
+			</tr>
+		</table>
+		<table>
+			<h4>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></h4>
+			<tr>
+				<td>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></td>
+				<td><div id="roofMetall" class="result"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="column col-xs-12 col-md-6 col-lg-4">
 	<table>
 		<h4>Доска 50&times;150,&nbsp;<em>пог.&nbsp;<em>м</em></em>.</h4>
 		<tr>
@@ -310,45 +340,29 @@
 		</tr>
 	</table>
 </div>
+</div>
+
 
 <script type="text/javascript" src="js/sc1_remastered.js"></script>
 <footer>
-<div class="column">
-	<h4><a href="http://www.youtube.com/playlist?list=PLd_gSEpgQtKONitxouaPr1kQ9r_9Vojhc" title="Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp">Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp на YouTube</a></h4>
-	<div class="subscribe"><div class="g-ytsubscribe" data-channelid="UCTkHUw4v5usEak3cazvMToQ" data-layout="full" data-count="default"></div></div>
+<div class='row'>
+	<div class="col-xs-12 col-md-6 col-lg-4">
+		<h4><a href="http://www.youtube.com/playlist?list=PLd_gSEpgQtKONitxouaPr1kQ9r_9Vojhc" title="Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp">Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp на YouTube</a></h4>
+		<div class="subscribe"><div class="g-ytsubscribe" data-channelid="UCTkHUw4v5usEak3cazvMToQ" data-layout="full" data-count="default"></div></div>
+	</div>
+	<div class="col-xs-12 col-md-6 col-lg-4">
+		<iframe width="200" height="113" src="https://www.youtube.com/embed/iAz_TwqMubU?showinfo=0&amp;showinfo=0" frameborder="0" allowfullscreen class="video"></iframe>
+		<h4><a href="http://www.youtube.com/watch?v=iAz_TwqMubU" Как пользоваться калькулятором для расчета каркасного дома>Как пользоваться калькулятором</a></h4>
+	</div>
 </div>
-<div class="column">
-	<iframe width="200" height="113" src="https://www.youtube.com/embed/iAz_TwqMubU?showinfo=0&amp;showinfo=0" frameborder="0" allowfullscreen class="video"></iframe>
-	<h4><a href="http://www.youtube.com/watch?v=iAz_TwqMubU" Как пользоваться калькулятором для расчета каркасного дома>Как пользоваться калькулятором</a></h4>
-</div>
-<div class="column" style="text-align:right">
-<!--LiveInternet counter--><script type="text/javascript"><!--
-document.write("<a href='//www.liveinternet.ru/click' "+
-"target=_blank><img src='//counter.yadro.ru/hit?t14.1;r"+
-escape(document.referrer)+((typeof(screen)=="undefined")?"":
-";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-";"+Math.random()+
-"' alt='' title='LiveInternet: показано число просмотров за 24"+
-" часа, посетителей за 24 часа и за сегодня' "+
-"border='0' width='88' height='31'><\/a>")
-//--></script><!--/LiveInternet-->
-</div>
+	
 </footer>
 
 </body>
 </html>
 
-     
-           
-<div class='user-footer'>    
-          
-            
-</div>
+        
 
-
-	
-	
 
 
 

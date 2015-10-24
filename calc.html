@@ -91,7 +91,7 @@
 			<form>
 				<table>
 					<h4>Размеры дома,&nbsp;<em>м</em></h4>
-					<div id="hiddenAlarm" class="hidden list-group-item list-group-item-danger">Введенное значение должно быть числом больше ноля!</div>
+					<div id="hiddenAlarm" class="hidden list-group-item list-group-item-danger">Введенное значение должно быть числом больше нуля!</div>
 					<tr>
 						<td>Ширина дома,&nbsp;<em>м</em></td>
 						<td><input type="text" id="a1" placeholder="5.2"></td>
@@ -219,13 +219,21 @@
 				<td>Суммарный объем утеплителя,&nbsp;<em>м<sup>3</sup></em></td>
 				<td><div id="v6" class="result"></div></td>
 			</tr>
+			<tr>
+				<td>Количество плит 600&times;1200&times;50мм,<em>шт</em></td>
+				<td><div id="vQuant" class="result"></div></td>
+			</tr>
 		</table>
 		<table>
 		<table>
 			<h4>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></h4>
 			<tr>
-				<td>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></td>
+				<td>Площадь сайдинга,&nbsp;<em>м<sup>2</sup></em></td>
 				<td><div id="vinyl" class="result"></div></td>
+			</tr>
+			<tr>
+				<td>Кол-во панелей сайдинга,<em>шт</em></td>
+				<td><div id="vinylQuant" class="result"></div></td>
 			</tr>
 		</table>
 		<table>
@@ -278,12 +286,20 @@
 			<td>Суммарное количество доски,&nbsp;<em>пог.&nbsp;<em>м</em></em></td>
 			<td><div id="woodSummary" class="result"></div></td>
 		</tr>
+		<tr>
+			<td>Суммарное количество доски 50&times;150&times;6000мм,&nbsp;<em>м<sup>3</sup></em></td>
+			<td><div id="woodSummaryM3" class="result"></div></td>
+		</tr>
 	</table>
 	<table>
 		<h4>Доска 50&times;100,&nbsp;<em>пог.&nbsp;<em>м</em></em>.</h4>
 		<tr>
 			<td>Внутренние стены,&nbsp;<em>пог.&nbsp;<em>м</em></em></td>
 			<td><div id="woodInsideWall" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>Суммарное количество доски 50&times;100&times;6000мм,&nbsp;<em>м<sup>3</sup></em></td>
+			<td><div id="woodInsideWallM3" class="result"></div></td>
 		</tr>
 	</table>
 	<table>
@@ -300,12 +316,20 @@
 			<td>Общее количество бруска,&nbsp;<em>пог.&nbsp;<em>м</em></em></td>
 			<td><div id="wood50x50Summ" class="result"></div></td>
 		</tr>
+		<tr>
+			<td>Общее количество бруска 50&times;50&times;6000мм,&nbsp;<em>м<sup>3</sup></em></td>
+			<td><div id="wood50x50SummM3" class="result"></div></td>
+		</tr>
 	</table>
 	<table>
 		<h4>Доска 25&times;150&times;6000, <em>шт.</em></h4>
 		<tr>
 			<td>Обрешетка кровли (через одну доску), <em>шт.</em></td>
 			<td><div id="wood25x150Roof" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>Обрешетка кровли 25&times;150&times;6000мм,&nbsp;<em>м<sup>3</sup></em></td>
+			<td><div id="wood25x150RoofM3" class="result"></div></td>
 		</tr>
 	</table>
 	<table>
@@ -323,6 +347,10 @@
 			<td>Суммарное количество,&nbsp;<em>м<sup>2</sup></em></td>
 			<td><div id="osbSumm" class="result"></div></td>
 		</tr>
+		<tr>
+			<td>Количество плит 1250&times;2500мм,&nbsp;<em>шт</em></td>
+			<td><div id="osbSummQuant" class="result"></div></td>
+		</tr>
 	</table>
 	<table>
 		<h4>Количество гипсокартона,&nbsp;<em>м<sup>2</sup></em></h4>
@@ -338,12 +366,16 @@
 			<td>Суммарное количество ГКЛ,&nbsp;<em>м<sup>2</sup></em></td>
 			<td><div id="gklSumm" class="result"></div></td>
 		</tr>
+		<tr>
+			<td>Количество листов ГКЛ 1200&times;2500мм,&nbsp;<em>шт</em></td>
+			<td><div id="gklSummQuant" class="result"></div></td>
+		</tr>
 	</table>
 </div>
 </div>
 
 
-<script type="text/javascript" src="js/sc1_remastered.js"></script>
+<script type="text/javascript" src="js/sc1.js"></script>
 <footer>
 <div class='row'>
 	<div class="col-xs-12 col-md-6 col-lg-4">

@@ -59,9 +59,9 @@
         
 </div>
 
-<img src="img/house1.png" class="house">
+<img src="img/house1.png" class="house ">
 
-<div class="data">
+<div class="data col-xs-12 col-md-6 col-lg-5">
 	<form>
 		<table>
 			<h4>Размеры дома,&nbsp;<em>м</em></h4>
@@ -94,7 +94,7 @@
 				<td><input type="text" id="a7" placeholder="1"></td>
 			</tr>
 		</table>
-		<div class="alert">Значения должны вводиться через точку.</div>
+		
 		<table>
 			<h4>Толщина утепления,&nbsp;<em>м</em></h4>
 			<tr>
@@ -126,7 +126,7 @@
 	<button id="myButton">Рассчитать</button>
 </div>
 
-<div class="column" style="clear:both;">
+<div class="column col-xs-12 col-md-6 col-lg-6" style="clear:both;">
 	<h4>Площади дома,&nbsp;<em>м<sup>2</sup></em></h4>
 	<table>
 		<tr>
@@ -158,38 +158,6 @@
 			<td><div id="s7" class="result"></div></td>
 		</tr>
 	</table>
-	<table>
-		<h4>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="sidingSummary" class="result"></div></td>
-		</tr>
-	</table>
-	<table>
-		<h4>Мембраны,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Пароизоляция,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="vapourMemb" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Гидро-ветроизоляция для стен,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="windMemb" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Гидро-ветроизоляция для кровли,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="roofMembrane" class="result"></div></td>
-		</tr>
-	</table>
-	<table>
-		<h4>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></h4>
-		<tr>
-			<td>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="roofMetall" class="result"></div></td>
-		</tr>
-	</table>
-</div>
-
-<div class="column">
 	<h4>Объем утеплителя,&nbsp;<em>м<sup>3</sup></em></h4>
 	<table>
 		<tr>
@@ -222,37 +190,38 @@
 		</tr>
 	</table>
 	<table>
-		<h4>Плитный материал (OSB или МДВП),&nbsp;<em>м<sup>2</sup></em></h4>
+	<table>
+		<h4>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></h4>
 		<tr>
-			<td>Пол,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="osbFloor" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Стены,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="osbWall" class="result"></div></td>
-		</tr>
-		<tr>
-			<td>Суммарное количество,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="osbSumm" class="result"></div></td>
+			<td>Виниловый сайдинг,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="vinyl" class="result"></div></td>
 		</tr>
 	</table>
 	<table>
-		<h4>Количество гипсокартона,&nbsp;<em>м<sup>2</sup></em></h4>
+		<h4>Мембраны,&nbsp;<em>м<sup>2</sup></em></h4>
 		<tr>
-			<td>ГКЛ для стен,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="gklWalls" class="result"></div></td>
+			<td>Пароизоляция,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="vapourMemb" class="result"></div></td>
 		</tr>
 		<tr>
-			<td>ГКЛ для потолка,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="gklCeiling" class="result"></div></td>
+			<td>Гидро-ветроизоляция для стен,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="windMemb" class="result"></div></td>
 		</tr>
 		<tr>
-			<td>Суммарное количество ГКЛ,&nbsp;<em>м<sup>2</sup></em></td>
-			<td><div id="gklSumm" class="result"></div></td>
+			<td>Гидро-ветроизоляция для кровли,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="roofMembrane" class="result"></div></td>
+		</tr>
+	</table>
+	<table>
+		<h4>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></h4>
+		<tr>
+			<td>Металлочерепица,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="roofMetall" class="result"></div></td>
 		</tr>
 	</table>
 </div>
-<div class="column">
+
+<div class="column col-xs-12 col-md-6 col-lg-6">
 	<table>
 		<h4>Доска 50&times;150,&nbsp;<em>пог.&nbsp;<em>м</em></em>.</h4>
 		<tr>
@@ -309,8 +278,40 @@
 			<td><div id="wood25x150Roof" class="result"></div></td>
 		</tr>
 	</table>
+	<table>
+
+		<h4>Плитный материал (OSB или МДВП),&nbsp;<em>м<sup>2</sup></em></h4>
+		<tr>
+			<td>Пол,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="osbFloor" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>Стены,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="osbWall" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>Суммарное количество,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="osbSumm" class="result"></div></td>
+		</tr>
+	</table>
+	<table>
+		<h4>Количество гипсокартона,&nbsp;<em>м<sup>2</sup></em></h4>
+		<tr>
+			<td>ГКЛ для стен,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="gklWalls" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>ГКЛ для потолка,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="gklCeiling" class="result"></div></td>
+		</tr>
+		<tr>
+			<td>Суммарное количество ГКЛ,&nbsp;<em>м<sup>2</sup></em></td>
+			<td><div id="gklSumm" class="result"></div></td>
+		</tr>
+	</table>
 </div>
-<script type="text/javascript" src="js/sc1.js"></script>
+
+<script type="text/javascript" src="js/sc1_remastered.js"></script>
 <footer>
 <div class="column">
 	<h4><a href="http://www.youtube.com/playlist?list=PLd_gSEpgQtKONitxouaPr1kQ9r_9Vojhc" title="Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp">Уроки по проектированию каркасного дома&nbsp;в&nbsp;SketchUp на YouTube</a></h4>

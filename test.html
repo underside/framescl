@@ -15,6 +15,8 @@
 	<button id="myButton">Рассчитать</button>
 	<input type="text" id="i1" >
 	<div id='div1'></div>
+	<div id='div2'></div>
+	<div id='div3'></div>
 
 <script type="text/javascript">
 	
@@ -73,20 +75,29 @@ function getId (val){
 return val;
 };
 
-//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
+//inHtml('div1', b); Ф-ция для вписывания полученного в расчетах значения в необходимый тэг, еще эта функция перодит в строковый формат и округляет до сотых
 function inHtml (val1,val2){ 
 	// Обнуляем div в котором хотим вывести результат
-	val1 = document.getElementById(val).innerHTML = null; 
+	// val1 = document.getElementById(val1).innerHTML = null; 
 
 //Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
+	val2 = val2.toFixed(2)
 	val3 = document.getElementById(val1).innerHTML = val2;
 
 return val3;
 }
 		
-			
-		
+function inHtml (val1,val2){ 
+	// Обнуляем div в котором хотим вывести результат
+	// val1 = document.getElementById(val1).innerHTML = null; 
 
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
+	val2 = val2.toFixed(2)
+	val3 = document.getElementById(val1).innerHTML = val2;
+
+return val3;
+}			
+		
 
 
 

@@ -31,65 +31,66 @@ button.onclick = function () {
 		
 		//Расчетные площади дома
 		var calcData = {};
-		calcData.s1 = inData.a1 * inData.a2 * inData.a7; //Площадь пола s1
-		calcData.s2 = inData.a1 * inData.a2; //Площадь потолка s2
-		calcData.s3 = (inData.a1 * inData.a4 * 2) + (inData.a2 * inData.a4 * 2); //Площадь внешних стен без фронтона s3 = (a1*a4*2) + (a2*a4*2)
-		calcData.s4 = inData.a4 * inData.a6; //Площадь внутренних стен s4 = (a4*a6)
-		calcData.s5 = inData.a1 * inData.a5; //Площадь фронтонных стен s5 = (a1*a5)
-		calcData.s6 = (inData.a1 * inData.a2 * inData.a7) - ((inData.a6 * inData.u2 + (inData.a1 * 2 + inData.a2 * 2) * inData.u1); //Жилая площадь дома s6
-		calcData.s7 = parseFloat(((((inData.a1 * 0.5 / 0.866) + 0.5)*(inData.a2 + 0.5)) * 2).toFixed(2));// Площадь двускатной кровли s7
+		calcData.s1 = inData.a1 * inData.a2 * inData.a7; //Площадь пола s0
+		calcData.s2 = inData.a1 * inData.a2; //Площадь потолка s1
+		calcData.s3 = inData.a1 * inData.a4 * 2 + inData.a2 * inData.a4 * 2; //Площадь внешних стен без фронтона s3 = (a1*a4*2) + (a2*a4*2) s2
+		calcData.s4 = inData.a4 * inData.a6; //Площадь внутренних стен s4 = (a4*a6) s3
+		calcData.s5 = inData.a1 * inData.a5; //Площадь фронтонных стен s5 = (a1*a5) s4
+		calcData.s6 = inData.a1 * inData.a2 * inData.a7 - (inData.a6 * inData.u2 + (inData.a1 * 2 + inData.a2 * 2) * inData.u1); //Жилая площадь дома s6 s5
+		calcData.s7 = (((inData.a1 * 0.5 / 0.866) + 0.5)*(inData.a2 + 0.5)) * 2;// Площадь двускатной кровли s7 s6
 
 		
 		//Расчетный объем утеплителя
-		calcData.v1 = parseFloat((s[0] * a[9]).toFixed(2)); //Пол, м3 
-		calcData.v2 = parseFloat((s[2] * inData.u1).toFixed(2)); // Внешние стены, м3
-		calcData.v3 = parseFloat((s[3] * inData.u2).toFixed(2)); //Внутренние стены, м3 
-		calcData.v4 = parseFloat((s[6] * a[10]).toFixed(2)); //Кровля, м3 
-		calcData.v5 = parseFloat((s[4] * a[11]).toFixed(2)); //Фронтонные стены, м3 
-		calcData.v6 = parseFloat((s[1] * a[12]).toFixed(2)); //Потолок, м3 
-		calcData.v7 = parseFloat((v[0] + v[1] + v[2] + v[3] + v[4] + v[24]).toFixed(2)); //Общий объем утеплителя, м3 
+		calcData.v1 = calcData.s1 * inData.u3; //Пол, м3 v0
+		calcData.v2 = calcData.s3 * inData.u1; // Внешние стены, м3 v1
+		calcData.v3 = calcData.s3 * inData.u2; //Внутренние стены, м3  v2
+		calcData.v4 = calcData.s7 * inData.u4; //Кровля, м3 v3
+		calcData.v5 = calcData.s5 * inData.u5; //Фронтонные стены, м3  v4
+		calcData.v6 = calcData.s2 * inData.u6; //Потолок, м3  v24
+		calcData.v7 = calcData.v1 + calcData.v2 + calcData.v3  + calcData.v4 + calcData.v5 + calcData.v6; //Общий объем утеплителя, м3  v5
 
 		//Расчетное количество плитного материала, м2
 
-		v[6] = s[0];     //osbFloor       
-		v[7] = s[2];     //osbWall
-		v[8] = s[0] + s[2]; //osbSumm
+		calcData.osbFloor = calcData.s1;     //osbFloor       
+		calcData.osbWall = calcData.s3;     //osbWall
+		calcData.osbSumm = calcData.osbFloor + calcData.osbWall; //osbSumm
 
 		//Расчетное количество Доски 50х100 и 50х150 для каркаса, м.п. 
-		v[9] = parseFloat(((inData.a2 / 0.6) * inData.a4 * 2 + (inData.a1 / 0.6) * inData.a4 * 2 + (inData.a2 * 3 + inData.a1 * 3)).toFixed(2)); //Д150 на каркас стен woodFrame
-		v[10] = parseFloat((((inData.a2+0.5)/0.6)*((inData.a1*0.5/0.866)+0.5)).toFixed(2));                //Д150 на стропила  woodRoofFrame
-		v[11] = parseFloat(((inData.a5* 4)*2).toFixed(2));                                           //Д150 на фронтонные стены woodFrameFront	
-		v[12] = parseFloat(((inData.a2/0.4)*inData.a1).toFixed(2));                                       //Д150 на лаги пола woodFloor
-		v[13] = parseFloat((inData.a6/0.6).toFixed(2));                                              //Д100 на внутренние стены woodInsideWall
-		v[14] = parseFloat((v[9] + v[10] + v[11] + v[12]*2).toFixed(2)); //Д150 суммарное количество woodSummary
+		calcData.woodFrame = (inData.a2 / 0.6) * inData.a4 * 2 + (inData.a1 / 0.6) * inData.a4 * 2 + (inData.a2 * 3 + inData.a1 * 3); // v9 Д150 на каркас стен woodFrame
+		calcData.woodRoofFrame = ((inData.a2+0.5)/0.6)*((inData.a1*0.5/0.866)+0.5);                //Д150 на стропила  woodRoofFrame v10
+		// ((a[1]+0.5)/0.6)*((a[0]*0.5/0.866)+0.5)
+		calcData.woodFrameFront = inData.a5* 4*2;                                           //Д150 на фронтонные стены woodFrameFront v11	
+		calcData.woodFloor = (inData.a2/0.4)*inData.a1;                                       //Д150 на лаги пола woodFloor v12
+		calcData.woodInsideWall = inData.a6/0.6;                                              //Д100 на внутренние стены woodInsideWall v13
+		calcData.woodSummary = calcData.woodFrame + calcData.woodRoofFrame + calcData.woodFrameFront + calcData.woodFloor*2; //Д150 суммарное количество woodSummary v14
 
 
 
 		//Расчетное количество брусок 50х50, м.п.
-		v[15] = parseFloat((((inData.a2/0.6)*inData.a4)*2 + ((inData.a1/0.6)*inData.a4)*2).toFixed(2)); //50х50 на стены для вентзазора wood50x50Walls 
+		calcData.wood50x50Walls = (inData.a2/0.6)*inData.a4*2 + (inData.a1/0.6)*inData.a4*2; //v15 50х50 на стены для вентзазора wood50x50Walls 
 				//var wood50x50Roof =  v[10]   woodRoofFrame
-		v[16] = parseFloat((v[15] + v[10]).toFixed(1));     //50х50 суммарное количество wood50x50Summ
+		calcData.wood50x50Summ = calcData.wood50x50Walls + calcData.woodRoofFrame;     // v16 50х50 суммарное количество wood50x50Summ
 
 		//Расчетное количество доска дюймовка, штук
-		v[17] = (s[6]/0.225/2).toFixed(0); //wood25x150Roof дюймовка для крыши под металлопрофиль, через одну доску
+		calcData.wood25x150Roof = (calcData.s7/0.225)/2; //v17 wood25x150Roof дюймовка для крыши под металлопрофиль, через одну доску
 
 		//Расчетное количество винилового сайдинга, м2
-		v[18]  = s[2] + s[4]; //sidingSummary
+		calcData.vinyl = calcData.s3 + calcData.s5; //siding v18
 
 
 		//Расчетное количество гипсокартона, м2
-		v[19] = inData.a6*inData.a4*2 + s[2];  //gklWalls
-		v[20] = s[1]; //gklCeiling
-		v[21] = v[18] + v[19]; //gklSumm
+		calcData.gklWalls = inData.a6*inData.a4*2 + calcData.s3;  //gklWalls v19
+		calcData.gklCeiling = calcData.s2; //gklCeiling v20
+		calcData.gklSumm = calcData.gklWalls + calcData.gklCeiling; //gklSumm v21
 
 		//Расчетное количество мембран, м2
-		v[22] = s[0] + s[1] + s[2]; //vapourMemb
-		v[23] = s[2] + s[4]; //windMemb
-		//var roofMembrane = s[6]
+		calcData.vapourMemb = calcData.s1 + calcData.s2 + calcData.s3; //vapourMemb v22
+		calcData.windMemb = calcData.s3 + calcData.s5; //windMemb v23
+		//var roofMembrane = calcData.s7
 
 
 		//Расчетное количество металлочерепицы, м2
-		// var roofMetall = s[6]
+		// var roofMetall = calcData.s7
 		
 
 
@@ -103,61 +104,62 @@ button.onclick = function () {
 		
 
 		//Перекидываем рассчетные значения в div, вывод рассчетных площадей дома
-		document.getElementById('s1').innerHTML += s[0];
-		document.getElementById('s2').innerHTML += s[1];
-		document.getElementById('s3').innerHTML += s[2];
-		document.getElementById('s4').innerHTML += s[3];
-		document.getElementById('s5').innerHTML += s[4];
-		document.getElementById('s6').innerHTML += s[5];
-		document.getElementById('s7').innerHTML += s[6];
+		inHtml('s1', calcData.s1);
+		inHtml('s2', calcData.s2);
+		inHtml('s3', calcData.s3);
+		inHtml('s4', calcData.s4);
+		inHtml('s5', calcData.s5);
+		inHtml('s6', calcData.s6);
+		inHtml('s7', calcData.s7);
 
 		//Перекидываем рассчетные значения в div, вывод объема утеплителя
-		document.getElementById('v1').innerHTML += v[0];
-		document.getElementById('v2').innerHTML += v[1];
-		document.getElementById('v3').innerHTML += v[2];
-		document.getElementById('v4').innerHTML += v[3];
-		document.getElementById('v5').innerHTML += v[4];
-		document.getElementById('v6').innerHTML += v[5];
-		document.getElementById('v24').innerHTML += v[24];
+		inHtml('v1', calcData.v1);
+		inHtml('v2', calcData.v2);
+		inHtml('v3', calcData.v3);
+		inHtml('v4', calcData.v4);
+		inHtml('v5', calcData.v5);
+		inHtml('v6', calcData.v7);
+		inHtml('v24', calcData.v6);
 		
 		//Перекидываем рассчетные значения в div, вывод количества плитного материала
-		document.getElementById('osbFloor').innerHTML += v[6];
-		document.getElementById('osbWall').innerHTML += v[7];
-		document.getElementById('osbSumm').innerHTML += v[8];
+		inHtml('osbFloor', calcData.osbFloor);
+		inHtml('osbWall', calcData.osbWall);
+		inHtml('osbSumm', calcData.osbSumm);
 
 		//Перекидываем рассчетные значения в div, доска на каркас
-		document.getElementById('woodFrame').innerHTML += v[9];
-		document.getElementById('woodRoofFrame').innerHTML += v[10];
-		document.getElementById('woodFrameFront').innerHTML += v[11];
-		document.getElementById('woodFloor').innerHTML += v[12];
-		document.getElementById('woodFloor2').innerHTML += v[12];
-		document.getElementById('woodInsideWall').innerHTML += v[13];
-		document.getElementById('woodSummary').innerHTML += v[14];
+		inHtml('woodFrame', calcData.woodFrame);
+		inHtml('woodRoofFrame', calcData.woodRoofFrame);
+		inHtml('woodFrameFront', calcData.woodFrameFront);
+		inHtml('woodFloor', calcData.woodFloor);
+		inHtml('woodFloor2', calcData.woodFloor);
+		inHtml('woodInsideWall', calcData.woodInsideWall);
+		inHtml('woodSummary', calcData.woodSummary);
 
 		//Перекидываем рассчетные значения в div, брусок 50х50 стены и кровля
-		document.getElementById('wood50x50Walls').innerHTML += v[15];
-		document.getElementById('wood50x50Roof').innerHTML += v[10];
-		document.getElementById('wood50x50Summ').innerHTML += v[16];
+		inHtml('wood50x50Walls', calcData.wood50x50Walls);
+		inHtml('wood50x50Roof', calcData.woodRoofFrame);
+		inHtml('wood50x50Summ', calcData.wood50x50Summ);
 
 		//Перекидываем рассчетные значения в div, доска дюймовка
-		document.getElementById('wood25x150Roof').innerHTML += v[17];
+		inHtml('wood25x150Roof', calcData.wood25x150Roof);
 
 		//Перекидываем рассчетные значения в div, виниловый сайдинг
-		document.getElementById('sidingSummary').innerHTML += v[18];
-
+		inHtml('vinyl', calcData.vinyl);
 		//Перекидываем рассчетные значения в div, гипсокартон
-		document.getElementById('gklWalls').innerHTML += v[19];
-		document.getElementById('gklCeiling').innerHTML += v[20];
-		document.getElementById('gklSumm').innerHTML += v[21];
+		inHtml('gklWalls', calcData.gklWalls);
+		inHtml('gklCeiling', calcData.gklCeiling);
+		inHtml('gklSumm', calcData.gklSumm);
 
 		//Перекидываем рассчетные значения в div, мембраны
-		document.getElementById('vapourMemb').innerHTML += v[22];
-		document.getElementById('windMemb').innerHTML += v[23];
-		document.getElementById('roofMembrane').innerHTML += s[5];
+		inHtml('vapourMemb', calcData.vapourMemb);
+		inHtml('windMemb', calcData.windMemb);
+		inHtml('gklWalls', calcData.gklWalls);
+		inHtml('roofMembrane', calcData.s7);
 
 
 		//Перекидываем рассчетные значения в div, металлочерепица, м2
-		document.getElementById('roofMetall').innerHTML += s[6];
+		
+		inHtml('roofMetall', calcData.s7);
 
 
 		
@@ -180,7 +182,7 @@ function getId (val){
 	//Округляем число до сотых и превращаем строку в число 
 	val = +(Math.round((val)*100)/100);	
 
-	//Проверяем чтобы значение было больше 0, и не являлось буквами
+	//Проверяем чтобы значение было больше 0, и не являлось строкой
 	if (val == 0 || val < 0 || isNaN(val)) {
 		return alert ("Введенное значение должно быть числом больше ноля");
 	};
@@ -188,11 +190,13 @@ function getId (val){
 return val;
 }
 
-			
+function inHtml (val1,val2){ 
+	
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг inHtml('div1', b)
+	val2 = +(Math.round((val2)*100)/100)
+	val3 = document.getElementById(val1).innerHTML = val2;
+
+return val3;
+}						
 		
-
-
-//if document.order.weight.value.replace (/\,/, '.');
-// ( parseFloat("2,2".replace(',', '.')) )
-
 

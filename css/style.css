@@ -92,6 +92,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 	padding: 0px;
 	border: none;
 }
+
 body {
 	line-height: 1.5;
 	margin: 0;
@@ -100,6 +101,9 @@ body {
 }
 h4 {
 	font-family: Arial, Helvetica, sans-serif;
+}
+img {
+
 }
 sup, sub { font-size: x-small; }
 header { 
@@ -125,7 +129,7 @@ input[type=text] {
 }
 .house {
 	float: right;
-	width: 55%; 
+	width: 50%; 
 }
 button {
 	display: block;
@@ -162,6 +166,7 @@ button:active { border: 3px #369 solid; }
 	float: left;
 	margin-top: 1em;
 	margin-bottom: 1em;
+
 }
 .result {
 	text-align: right;

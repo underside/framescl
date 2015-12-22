@@ -1,0 +1,108 @@
+	
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>TEST</title>
+<meta name="description" content="Калькулятор для примерного расчета материала для строительства каркасного дома">
+<meta name="keywords" content="калькулятор дома, расчет дома, расчет каркаса, рассчитать каркасный дом, посчитать материад для каркасника">
+<script src="../sc1.js"></script>
+
+</head>
+
+<body>
+	<button id="myButton">Рассчитать</button>
+	<input type="text" id="i1" >
+	<div id='div1'></div>
+	<div id='div2' class='hidden'>Внимание! Не те вводные данные. </div>
+	<div id='div3'></div>
+
+<script type="text/javascript">
+	
+//(function () { //оборачиваем все в одну анонимную функцию-обертку, типа модульность пилим
+
+
+
+var button = document.getElementById('myButton');
+	
+
+		
+button.onclick = function () {
+		
+			
+    'use strict';
+	(function () {
+		
+		//Обнуляем значения всех расчетных форм
+		// document.getElementById('div1').innerHTML = null;	
+
+
+				
+		var a = getId('i1', 'div1'); 
+		var b = a + 10; 
+
+		inHtml('div1', b);
+		// document.getElementById('div1').innerHTML += b;
+		
+
+		
+
+
+
+	})();
+};
+
+
+
+//Функция для захвата и проверки данных из input (полей ввода калькулятора) 
+function getId (val){ 
+		
+	//Берем элемент по ID
+	val = document.getElementById(val).value;	
+
+	//Проверяем элемент на наличие запятой вместо точки, если есть, меняем на точку
+	val = val.replace(/\,/, '.'); 
+
+	//Округляем число до сотых и превращаем строку в число 
+	val = +(Math.round((val)*100)/100);	
+
+	//Проверяем чтобы значение было больше 0, и не являлось буквами
+	if (val == 0 || val < 0 || isNaN(val)) {
+		return document.getElementById('div2').classList.remove('hidden');
+	};
+
+return val;
+};
+
+//inHtml('div1', b); Ф-ция для вписывания полученного в расчетах значения в необходимый тэг, еще эта функция перодит в строковый формат и округляет до сотых
+function inHtml (val1,val2){ 
+	// Обнуляем div в котором хотим вывести результат
+	// val1 = document.getElementById(val1).innerHTML = null; 
+
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
+	val2 = val2.toFixed(2)
+	val3 = document.getElementById(val1).innerHTML = val2;
+
+return val3;
+}
+		
+function inHtml (val1,val2){ 
+	// Обнуляем div в котором хотим вывести результат
+	// val1 = document.getElementById(val1).innerHTML = null; 
+
+//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
+	val2 = val2.toFixed(2)
+	val3 = document.getElementById(val1).innerHTML = val2;
+
+return val3;
+}			
+		
+
+
+
+
+</script>
+			
+</body>
+</html>

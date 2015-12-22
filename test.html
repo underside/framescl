@@ -1,108 +1,79 @@
-	
-<!DOCTYPE HTML>
-
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>TEST</title>
-<meta name="description" content="Калькулятор для примерного расчета материала для строительства каркасного дома">
-<meta name="keywords" content="калькулятор дома, расчет дома, расчет каркаса, рассчитать каркасный дом, посчитать материад для каркасника">
-<script src="../sc1.js"></script>
+	<title>Frameschool</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel='stylesheet' href='./css/bootstrap.min.css' />
+	<link rel='stylesheet' href='./css/style.css' />
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa&subset=cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 
 </head>
 
 <body>
-	<button id="myButton">Рассчитать</button>
-	<input type="text" id="i1" >
-	<div id='div1'></div>
-	<div id='div2' class='hidden'>Внимание! Не те вводные данные. </div>
-	<div id='div3'></div>
+  
 
-<script type="text/javascript">
+<title>Menu</title>
+  </head>
+<body>
+
+ <div class="container-fluid" >
+    
+    <nav class="navbar navbar-default">
+      <div class="container">
+                
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+    
+        
+<div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="./index.html">Frameschool</a></li>
+            <li><a href="./terms.html">Термины и понятия</a></li>
+            <li><a href="./calc.html">Калькулятор</a></li>
+            <li><a href="#">Видеоуроки</a></li>
+            <li><a href="#">Тестирование</a></li>
+            <li><a href="#">Литература</a></li>
+            <li><a href="#">Контакты</a></li>
+            
+           
+          </ul>           
+    
+        
+         
+</div>
+        </div>
+        
+</div>
+
+
+<div class="row">
+	<div class='col-xs-12 col-md-12 col-lg-12'>      
+	</div>
+</div>
+
+
+<div class='user-footer'>    
+          
+            
+</div>
+	        
+	<script src='./js/jquery-2.1.4.min.js'></script>
+	<script src='./js/bootstrap.min.js'></script>
 	
-//(function () { //оборачиваем все в одну анонимную функцию-обертку, типа модульность пилим
 
 
-
-var button = document.getElementById('myButton');
-	
-
-		
-button.onclick = function () {
-		
-			
-    'use strict';
-	(function () {
-		
-		//Обнуляем значения всех расчетных форм
-		// document.getElementById('div1').innerHTML = null;	
-
-
-				
-		var a = getId('i1', 'div1'); 
-		var b = a + 10; 
-
-		inHtml('div1', b);
-		// document.getElementById('div1').innerHTML += b;
-		
-
-		
-
-
-
-	})();
-};
-
-
-
-//Функция для захвата и проверки данных из input (полей ввода калькулятора) 
-function getId (val){ 
-		
-	//Берем элемент по ID
-	val = document.getElementById(val).value;	
-
-	//Проверяем элемент на наличие запятой вместо точки, если есть, меняем на точку
-	val = val.replace(/\,/, '.'); 
-
-	//Округляем число до сотых и превращаем строку в число 
-	val = +(Math.round((val)*100)/100);	
-
-	//Проверяем чтобы значение было больше 0, и не являлось буквами
-	if (val == 0 || val < 0 || isNaN(val)) {
-		return document.getElementById('div2').classList.remove('hidden');
-	};
-
-return val;
-};
-
-//inHtml('div1', b); Ф-ция для вписывания полученного в расчетах значения в необходимый тэг, еще эта функция перодит в строковый формат и округляет до сотых
-function inHtml (val1,val2){ 
-	// Обнуляем div в котором хотим вывести результат
-	// val1 = document.getElementById(val1).innerHTML = null; 
-
-//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
-	val2 = val2.toFixed(2)
-	val3 = document.getElementById(val1).innerHTML = val2;
-
-return val3;
-}
-		
-function inHtml (val1,val2){ 
-	// Обнуляем div в котором хотим вывести результат
-	// val1 = document.getElementById(val1).innerHTML = null; 
-
-//Ф-ция для вписывания полученного в расчетах значения в необходимый тэг
-	val2 = val2.toFixed(2)
-	val3 = document.getElementById(val1).innerHTML = val2;
-
-return val3;
-}			
-		
-
-
-
-
-</script>
-			
 </body>
+
 </html>
